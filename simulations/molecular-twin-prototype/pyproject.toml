@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moltwin"
+version = "0.1.0"
+description = "Research prototype for personalized protein molecular-dynamics comparison"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pydantic>=2.8",
+  "typer>=0.12",
+  "rich>=13.7",
+  "biopython>=1.84",
+  "mdtraj>=1.10",
+]
+
+[project.optional-dependencies]
+md = ["openmm>=8.6", "pdbfixer"]
+dev = ["pytest>=8.3", "ruff>=0.6"]
+
+[project.scripts]
+moltwin = "moltwin.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
